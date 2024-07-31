@@ -1,6 +1,7 @@
 import React from 'react'
 import Data from './Data'
 import './home.css'
+import Scroll from './Scroll'
 import Social from './Social'
 
 
@@ -13,6 +14,7 @@ export default function Home() {
                 <div className="home__img"></div>
                 <Data />
             </div>
+            <Scroll />
         </div>
     </section>
   )
