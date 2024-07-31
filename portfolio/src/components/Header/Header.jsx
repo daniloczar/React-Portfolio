@@ -3,7 +3,14 @@ import * as Unicons from "@iconscout/react-unicons";
 import './header.css'
 
 export default function Header() {
-    const [Toggle, showMenu] = useState(false)
+    window.addEventListener("scroll", function () {
+      const header = document.querySelector(".header");
+      if (this.scrollY >= 80) header.classList.add("scroll-header");
+      else header.classList.remove("scroll-header");
+    });
+
+    const [Toggle, showMenu] = useState(false);
+    const [activeNav, setActiveNav] = useState("#home");
   return (
     <header className="header">
       <nav className="nav container">
@@ -13,15 +20,25 @@ export default function Header() {
         <div className={Toggle ? "nav__menu show-menu" : "nav__menu"}>
           <ul className="nav__list grid">
             <li className="nav__item">
-              <a href="#home" className="nav__link active-link">
-                <i className="uil uil-estate nav__icon">
-                  <Unicons.UilEstate />
-                </i>
+              <a
+                href="#home"
+                onClick={() => setActiveNav("#home")}
+                className={
+                  activeNav === "#home" ? "nav__link active-link" : "nav__link"
+                }
+              >
+                <Unicons.UilEstate className="nav__icon" />
                 Home
               </a>
             </li>
             <li className="nav__item">
-              <a href="#about" className="nav__link">
+              <a
+                href="#about"
+                onClick={() => setActiveNav("#about")}
+                className={
+                  activeNav === "#about" ? "nav__link active-link" : "nav__link"
+                }
+              >
                 <i className="uil uil- nav__icon">
                   <Unicons.UilUser />
                 </i>
@@ -29,7 +46,29 @@ export default function Header() {
               </a>
             </li>
             <li className="nav__item">
-              <a href="#projects" className="nav__link">
+              <a
+                href="#skills"
+                onClick={() => setActiveNav("#skills")}
+                className={
+                  activeNav === "#skills"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
+                <Unicons.UilScenery className="nav__icon" />
+                Skills
+              </a>
+            </li>
+            <li className="nav__item">
+              <a
+                href="#projects"
+                onClick={() => setActiveNav("#projects")}
+                className={
+                  activeNav === "#projects"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
                 <i className="uil uil- nav__icon">
                   <Unicons.UilScenery />
                 </i>
@@ -37,7 +76,15 @@ export default function Header() {
               </a>
             </li>
             <li className="nav__item">
-              <a href="#contact" className="nav__link">
+              <a
+                href="#contact"
+                onClick={() => setActiveNav("#contact")}
+                className={
+                  activeNav === "#contact"
+                    ? "nav__link active-link"
+                    : "nav__link"
+                }
+              >
                 <i className="uil uil- nav__icon">
                   <Unicons.UilMessage />
                 </i>
